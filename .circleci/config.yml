@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   build-publish-site:
     docker:
-    - image: abazovic/hugo
+    - image: abazovic/hugo:1.0.0
     steps:
     - checkout
     - run:
