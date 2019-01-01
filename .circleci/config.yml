@@ -2,8 +2,8 @@ version: 2.1
 jobs:
   build-image:
     machine:
-      enabled:true
-    working_direcotory: ~/project
+      enabled: true
+    working_directory: ~/project
     steps:
     - checkout
     - run:
