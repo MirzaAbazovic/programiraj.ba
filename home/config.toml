@@ -1,0 +1,57 @@
+baseurl = "programiraj.ba/"
+#title = "PROGRAMIRAJ BA"
+theme = "hugo-coder"
+languagecode = "en"
+defaultcontentlanguage = "en"
+
+paginate = 20
+canonifyurls = true
+
+pygmentsstyle = "bw"
+pygmentscodefences = true
+pygmentscodefencesguesssyntax = true
+
+disqusShortname = "programiraj-ba"
+
+[params]
+    author = "Mirza Abazović"
+    info = "Software engineer"
+    description = "My personal website"
+    keywords = "blog,developer,personal"
+    avatarurl = "images/avatar.jpeg"
+
+    favicon_32 = "/img/favicon-32x32.png"
+    favicon_16 = "/img/favicon-16x16.png"
+
+  #  footercontent = "Enter a text here."
+
+    hidecredits = false
+    hidecopyright = false
+
+    rtl = false
+
+    math = true
+    custom_css = ["css/custom.css"]
+
+# Social links
+[[params.social]]
+    name = "Github"
+    icon = "fab fa-github fa-2x"
+    weight = 1
+    url = "https://github.com/MirzaAbazovic/"
+
+[[params.social]]
+    name = "Linkedin"
+     icon = "fab fa-linkedin fa-2x"
+    url = "https://www.linkedin.com/in/mirza-abazovic-063a7397/"
+
+
+# Menu links
+[[menu.main]]
+    name = "Blog"
+    weight = 1
+    url  = "https://blog.programiraj.ba/"
+# [[menu.main]]
+#     name = "About"
+#     weight = 2
+#     url = "/about/"
