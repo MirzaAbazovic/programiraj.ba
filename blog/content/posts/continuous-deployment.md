@@ -1,31 +1,33 @@
 ---
 title: "Continuous Deployment"
 date: 2018-12-28T03:01:06+01:00
-draft: true
+draft: false
 featuredImg: ""
 tags: 
-  - circleCI, CD
+  - circleCI, CD, hugo, lftp
 ---
 
-When I created first post I hat to generated site (using hugo) and I had to use ftp to upload public/ folder to programiraj.ba site.
+When I created first post I hat to generated site (using hugo) and I had to use ftp to upload files to programiraj.ba site.
 
-Do I want to do this every time I make or change content ? No one sane would like to do that. And rule of thumb is when You have to do something more than three times automate it.
+Do I want to do this every time I make or change content ? 
+No one sane would like to do that. 
+And rule of thumb is when You have to do something more than three times automate it.
 
 What I want is that every time i push changes to master to build site with hugo and deploy it to programiraj.ba
 
 This is called **continuous deployment (CD).**
-If this repository was on bitbucket I would use bitbucket pipelines. But let us use CircleCI (and leave bitbucket pipelines for some other tasks in future).
+If this repository was on bitbucket this could be done using [bitbucket pipelines](https://bitbucket.org/product/features/pipelines) or if I had [Jenkins](https://jenkins.io/) instance installed on AWS. Let us now use [CircleCI](https://circleci.com/) (and leave bitbucket pipelines for some other tasks in future).
 
-Every CI/CD tool has some kind of pipeline which is usually some yaml, json or some scripting language that describes process of integration and deployment. Those include some jobs, commands, executors, steps, workflows etc...
+Every CI/CD tool has some kind of pipeline which is usually described with some yaml, json file or by some scripting language that describes process of integration and deployment. Those include some jobs, commands, executors, steps, workflows etc...
 
-Bottom line is that You have to know how to tell CI/CD system what You want to do how will Your process look like.
-
+Bottom line is that You have to know how to tell CI/CD system what You want to do.
+ 
 Let's to describe process in pseudo pipeline
 1. When I push new content to github on master branch checkout new code
 2. Build site with hugo
 3. Publish new site on programiraj.ba
 
-For step 1. we have to options pooling or notification (usually via web hooks). Pooling is process where CircleCi (or other CI/CD tool like Jenkins) checks are there changes on github for every 5 minutes or any time You set. Other option is when there is push on master github notifies CircleCi.
+For step 1. we have to options pooling or notification (usually via web hooks). Pooling is process where CircleCi (or other CI/CD tool like Jenkins) checks are there any changes on github for every x minutes (or any time period You set), second option is when there is push on master github notifies CircleCi.
 
 Step 2. and 3. are all done on CircleCI.
 
@@ -39,18 +41,57 @@ CirceCI works like this:
 
 We must learn how to write config.yml to do steps 2. and 3.
 
-So let us try with script
+For this site I use this script
 ```
-version: 2
+version: 2.1
 jobs:
-  build:
-    docker: # use the docker executor type; machine and macos executors are also supported
-      - image:  circleci/golang:1.8 # the primary container, where your job's commands are run
+  build-publish-site:
+    docker:
+    - image: abazovic/hugo:1.0.0
     steps:
-      - checkout # check out the code in the project directory
-      - run: echo "install hugo" 
-      - run: sudo apt-get install hugo
-      - run: ls
-      - run: hugo
+    - checkout
+    - run:
+          name: "Pull Submodules"
+          command: |
+            git submodule init
+            git submodule update --remote
+    - run:
+        name: "Run Hugo for blog"
+        command: cd blog && HUGO_ENV=production hugo -v
+    - run:
+        name: "Run Hugo for homepage"
+        command: cd home && HUGO_ENV=production hugo -v
+    - run:
+        name: "Deploy website"
+        command: deploy/deploy.sh
+workflows:
+  version: 2
+  workflow:
+    jobs:
+    - build-publish-site
+```
+You can find this script on https://github.com/MirzaAbazovic/programiraj.ba and also all code that I use to deploy https://programiraj.ba and https://blog.programiraj.ba
+
+In plain English this script has one ```workflow``` that has one job ```build-publish-site```. Job is running on docker image ```abazovic/hugo:1.0.0``` and  has steps to:
+1. checkout code ```checkout```
+2. **Pull Submodules** Because I use two themes that I added as git submodules.
+3. **Run Hugo for blog** build static site for blog.
+4. **"Run Hugo for homepage** build static site for home page.
+5. **Deploy website** Deploy it (upload files via lftp) using script [deploy.sh](https://github.com/MirzaAbazovic/programiraj.ba/blob/master/deploy/deploy.sh)
+
+What was tricky:
+1. Make custom docker image with installed software: hugo and lftp (will describe this in some other post)
+2. Had some problems with git submodules, after checkout step I had to explicitly call ```git submodule init && git submodule update --remote```
+3. I also had to write script to upload folder with sub folders generated by hugo to remote folder by ftp protocol. Script uses [lftp](https://lftp.yar.ru/)
+
+Script for upload
+```bash
+#!/bin/bash
+echo "Upload all files from blog/public to blog.programiraj.ba using lftp"
+lftp -e "set ftp:ssl-allow no; mirror -R -P 5  ~/project/blog/public /blog.programiraj.ba; quit" -u $FTP_USERNAME,$FTP_PASSWORD ftp://programiraj.ba
+echo "Upload all files from home/public to programiraj.ba using lftp"
+lftp -e "set ftp:ssl-allow no; mirror -R -P 5 ~/project/home/public /www; quit" -u $FTP_USERNAME,$FTP_PASSWORD ftp://programiraj.ba
 ```
 
+Env variables $FTP_USERNAME $FTP_PASSWORD are set on CircleCI. 
+  
