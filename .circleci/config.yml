@@ -6,10 +6,15 @@ jobs:
     steps:
     - checkout
     - run:
-        name: Run Hugo
+          name: "Pull Submodules (blog/theme/hermit)"
+          command: |
+            git submodule init
+            git submodule update --remote
+    - run:
+        name: "Run Hugo"
         command: cd blog && HUGO_ENV=production hugo -v
     - run:
-        name: Deploy Website
+        name: "Deploy Website"
         command: deploy/deploy.sh
 workflows:
   version: 2
