@@ -13,9 +13,9 @@ jobs:
     - run:
         name: "Run Hugo for blog"
         command: cd blog && HUGO_ENV=production hugo -v
+    - run:
         name: "Run Hugo for homepage"
         command: cd home && HUGO_ENV=production hugo -v
-
     - run:
         name: "Deploy website"
         command: deploy/deploy.sh
