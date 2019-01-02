@@ -36,7 +36,7 @@ disqusShortname = "programiraj-ba"
     inverted = false
 
     # Custom CSS
-    custom_css = []
+    custom_css = ["/css/home.css"]
 
 [[params.social]]
     name = "Github"
@@ -96,7 +96,7 @@ disqusShortname = "programiraj-ba"
 
         # You can configure the theme parameter for each language.
         [languages.en.params]
-        author = "Mirza Abazovic"
+        author = "Mirza Abazović"
         info = "Software Engineer"
         description = "Mirza Abazovic's personal website"
         keywords = "blog,developer,personal"

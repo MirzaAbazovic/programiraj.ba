@@ -1,7 +1,7 @@
 baseURL = "https://blog.programiraj.ba/"
 languageCode = "en-us"
 defaultContentLanguage = "en"
-title = "Programiraj"
+title = "Bloging about"
 theme = "hermit"
 # enableGitInfo = true
 pygmentsCodefences  = true
@@ -30,7 +30,7 @@ disqusShortname = "programiraj-ba"
   dateformNumTime = "2006-01-02 15:04 -0700"
 
   # themeColor = "#494f5c"  # Theme color in meta tags.
-  homeSubtitle = "About software engineering, math, statistic etc.."
+  homeSubtitle = "programming, math, statistic, etc."
   #footerCopyright = ' &#183; <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0</a>'
   # gitUrl = "https://github.com/Someone/SomeRepo/commit/" # Prefix of link to the git commit detail page. GitInfo must be enabled.
   justifyContent = false  # Set "text-align: justify" to .content, requires extended version of Hugo
@@ -53,6 +53,11 @@ disqusShortname = "programiraj-ba"
 [menu]
 
   [[menu.main]]
+    name = "Home"
+    url = "https://programiraj.ba"
+    weight = 30
+  
+  [[menu.main]]
     name = "Posts"
     url = "/posts/"
     weight = 10
@@ -61,3 +66,5 @@ disqusShortname = "programiraj-ba"
     name = "About me"
     url = "/about-me/"
     weight = 20
+
+
