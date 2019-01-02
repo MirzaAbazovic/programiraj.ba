@@ -1,3 +1,4 @@
 #!/bin/bash
-echo "TODO upload all files from blog/public to blog.programiraj.ba using ftp"
+echo "Upload all files from blog/public to blog.programiraj.ba using lftp"
+lftp -e "set ftp:ssl-allow no; mirror -R ../blog/public /blog.programiraj.ba/; quit" -u $FTP_USERNAME,$FTP_PASSWORD ftp://programiraj.ba
 
