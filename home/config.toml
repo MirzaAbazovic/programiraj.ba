@@ -1,4 +1,4 @@
-baseurl = "programiraj.ba/"
+baseurl = "https://programiraj.ba/"
 #title = "johndoe"
 
 theme = "hugo-coder"
