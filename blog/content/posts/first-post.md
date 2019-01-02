@@ -3,7 +3,7 @@ title: "First Post"
 date: 2018-12-28T02:02:20+01:00
 featuredImg: ""
 tags: 
-  - hugo, general
+  - Hugo
 ---
 
 Let's try to write down some ideas using this very fast static site generator [hugo](https://gohugo.io).

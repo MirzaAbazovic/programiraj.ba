@@ -4,7 +4,10 @@ date: 2018-12-28T03:01:06+01:00
 draft: false
 featuredImg: ""
 tags: 
-  - circleCI, CD, hugo, lftp
+  - Circleci
+  - Continuous Deployment (CD)
+  - Hugo
+  - lftp
 ---
 
 When I created first post I hat to generated site (using hugo) and I had to use ftp to upload files to programiraj.ba site.
