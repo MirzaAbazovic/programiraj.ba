@@ -27,8 +27,11 @@ Bottom line is that You have to know how to tell CI/CD system what You want to d
  
 Let's to describe process in pseudo pipeline
 1. When I push new content to github on master branch checkout new code
+
 2. Build site with hugo
+
 3. Publish new site on programiraj.ba
+
 
 For step 1. we have to options pooling or notification (usually via web hooks). Pooling is process where CircleCi (or other CI/CD tool like Jenkins) checks are there any changes on github for every x minutes (or any time period You set), second option is when there is push on master github notifies CircleCi.
 
