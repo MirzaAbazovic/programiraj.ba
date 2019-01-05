@@ -14,6 +14,9 @@ pygmentscodefencesguesssyntax = true
 
 disqusShortname = "programiraj-ba"
 
+[blackfriday]
+    hrefTargetBlank = false
+
 [params]
     author = "Mirza Abazovic"
     description = "My personal website"
@@ -38,12 +41,13 @@ disqusShortname = "programiraj-ba"
     # Custom CSS
     custom_css = ["/css/home.css"]
 
+
 [[params.social]]
     name = "Github"
     icon = "fab fa-github"
     weight = 1
     url = "https://github.com/MirzaAbazovic/"
-
+ 
 [[params.social]]
     name = "LinkedIn"
     icon = "fab fa-linkedin"
@@ -51,10 +55,17 @@ disqusShortname = "programiraj-ba"
     url = "https://www.linkedin.com/in/mirza-abazovic-063a7397/"
 
 [[params.social]]
+    name = "Stackexchange"
+    icon = "fab fa-stack-exchange"
+    weight = 3
+    url = "https://stackexchange.com/users/293052/mirza?tab=accounts"
+
+[[params.social]]
     name = "Blog"
     icon = "fab fa-blogger"
     weight = 3
-    url = "https://blog.programiraj.ba"
+    url = "https://blog.programiraj.ba/posts"
+
 # [[params.social]]
 #     name = "Medium"
 #     icon = "fab fa-medium"
@@ -75,7 +86,7 @@ disqusShortname = "programiraj-ba"
 [[menu.main]]
     name = "Blog"
     weight = 1
-    url  = "/posts/"
+    url  = "https://blog.programiraj.ba/posts/"
 # [[menu.main]]
 #     name = "About"
 #     weight = 2
@@ -111,7 +122,7 @@ disqusShortname = "programiraj-ba"
         [[languages.en.menu.main]]
         name = "Blog"
         weight = 1.0
-        url = "https://blog.programiraj.ba"
+        url = "https://blog.programiraj.ba/posts"
 
         # [[languages.en.menu.main]]
         # name = "Projects"

@@ -46,13 +46,13 @@ disqusShortname = "programiraj-ba"
   #  name = "email"
   #  emailto = "mirza.abazovic@gmail.com"
 
-  [[params.social]]
-    name = "linkedin"
-    url = "https://www.linkedin.com/in/mirza-abazovic-063a7397/"
+  # [[params.social]]
+  #   name = "linkedin"
+  #   url = "https://www.linkedin.com/in/mirza-abazovic-063a7397/"
 
-  [[params.social]]
-    name = "github"
-    url = "https://github.com/MirzaAbazovic"
+  # [[params.social]]
+  #   name = "github"
+  #   url = "https://github.com/MirzaAbazovic"
 
 [menu]
 
