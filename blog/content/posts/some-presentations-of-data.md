@@ -1,13 +1,17 @@
 ---
 title: "Some Presentations of Data"
-date: 2019-01-05T12:38:26+01:00
-draft: true
+date: 2019-01-16T12:38:26+01:00
+draft: false
 toc: false
 images:
 tags: 
   - statistics
   - steam-an-leaf
   - histogram
+  - mean
+  - median
+  - mode
+  - range
 ---
 
 The collection, organisation and analysis of numerical information are all subject called **statistics**. Pieces of numerical and other information are called **data**. **Data** is 'a series of facts from which conclusions may be drawn'.
@@ -84,7 +88,52 @@ For example if number of variables in data set is even  4, 5, 7, 12, 22 then mea
 
 **Range** The largest value in the list is 10, and the smallest is 2, so the range is 10 - 2 = 8 (max - min).
 
+
+## Steam-and-leaf
+
+One interesting presentation is steam-and-leaf
+
+Suppose that a height of children in one class of elementary school is measured and data set is:
+
+65, 54, 76, 72, 71, 83, 72, 92, 60, 42, 73, 84, 72, 97, 72, 91, 53, 63, 84, 85
+
+Let us sort data and take the leading digit (10's digit) as stem, and trailing digits are leafs.
+
+
+42, 53, 54, 60, 63, 65, 71, 72, 72, 72, 72, 73, 76, 83, 84, 84, 85, 91, 92, 97
+
+| Steam | Leaf |
+|---|---|
+|4|2|
+|5|34|
+|6|035|
+|7|1222236|
+|8|3445|
+|9|127|
+
+
+4|2 means 
+
+5|34 means 53 and 54
+
+If You turn this on side you can see the "shape" of the height distribution and all data is visible (maintained).
+
+This is called ordered steam-and-leaf because leaf are ordered |7|**1222236**.
+
+Depending of data set stem can be taken as two digits.
+164 184 186 175 187
+
+16|4
+
+17|5
+
+18|467
+
+If data set is large stem-and-leaf diagram is not best method of displaying data and you need to use other methods.
+
 ## Tally
+
+For large data sets of data you may wish to divide the data into groups, called **classes**.
 
 {{< figure src="/img/posts/some-presentations-of-data/jail.jpg" title="Modern tally" >}}
 
@@ -94,11 +143,44 @@ We can use tally to present data. For example favorite drinks of 62 students can
 {{< figure src="/img/posts/some-presentations-of-data/drinks_tally.gif">}}
 
 
-## Steam-and-leaf
-One interesting presentation is
-
-
-
 ## Histogram
+Data is collected from big food shoop from all types of cerelars and amout of sodium is in cerelars is variable.
+Data is presented in next table as grouped frequency distribution. [0-49], [50-99] ... are classes
+
+| Amount of sodium (mg) | Tally | Frequency |
+|-----------------------|--------|-----------|
+| 0-49 | ***** ***** **  | 12 |
+| 50-99 | ***** | 5 |
+| 100-149 | ***** ***** ** | 12 |
+| 150-199 | ***** ***** ***** ** | 17 |
+| 200-249 | ***** ***** ***** ***** * | 21 |
+| 250-299 | ***** **** | 9 |
+| 300-349 | * | 1 |
+
+ There is no clear rule about how many classes should be chosen or what size they should be, but it is usual to have 5-10 classes.
+
+ Grouping data into classes means losing some information. We can see in table that there are 5 types of cereals with amount of sodium between 50 and 99 but we don't know exact values of observations.
+ 
+ Amount of sodium is **continuous variable** and amount is rounded to the nearest mg. Class labeled 50-99 would contain values from 49.5 up to (but not including) 99.5. These real endpoints 49.5 and 99.5 are referred as **class boundaries**. 49.5 <= Class 50-99 < 99.5 or [49.5-99.5)
+
+ When a grouped frequency distribution contains continuous data, one form of display is the **histogram**. 
+ 
+ Histogram looks similar to a bar chart.
+ 
+ A chart which represents continuous data is a **histogram** if
+ - the bars have no space between them (they mey be bars of height zero)
+ - the area of each bar is proportional to the frequency
 
 
+{{< figure src="/img/posts/some-presentations-of-data/histogram-apples.jpg">}}
+
+
+widht-of-class * height = frequency
+
+height = frequency / widht-of-class
+
+Height is known as **frequency density**
+
+Time is up, for this post :)
+
+{{< figure src="/img/posts/some-presentations-of-data/clock.jpg">}}
