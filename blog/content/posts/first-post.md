@@ -28,7 +28,7 @@ git submodule add https://github.com/Track3/hermit.git themes/hermit
 5. Optionally:
 
 In order to have comments (discussion) available on site Open account on [disqus](https://disqus.com/) and add Your web site to get disqusShortname, set it in config.toml. More info on https://gohugo.io/content-management/comments/. If You Want to track visitors set googleAnalytics https://gohugo.io/templates/internal/#configure-google-analytics. My example is in 
-[config.toml](https://github.com/MirzaAbazovic/programiraj.ba/blob/master/config.toml)
+[config.toml](https://raw.githubusercontent.com/MirzaAbazovic/programiraj.ba/master/blog/config.toml)
 
 
 
